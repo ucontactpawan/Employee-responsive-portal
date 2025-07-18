@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.anniversary-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+    margin-top: 80px;
+    margin-left: 250px;
+}
+
+.employee-anniversaries {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #4e73df;
+    text-align: left;
+    margin-bottom: 28px;
+    padding: 0;
+    width: 100%;
+}
+
+.anniversary-sections {
+    display: grid;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.anniversary-heading {
+    color: #1a237e;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e3f2fd;
+    text-align: left;
+    
+}
+
+.anniversary-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.anniversary-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    border: 1.5px solid #e0e0e0;
+    min-width: 180px;
+    max-width: 210px;
+    margin-bottom: 12px;
+    margin-right: 0;
+    transition: box-shadow 0.2s, transform 0.2s;
+    font-size: 0.98em;
+}
+
+.anniversary-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    transform: translateY(-3px);
+}
+
+.anniversary-card.past {
+    background: #f8f9fa;
+    border: 1.5px solid #e9ecef;
+    margin-bottom: 50px;
+}
+
+.anniversary-card.future {
+    background: #f3f8ff;
+    border: 1.5px solid #e3f2fd;
+}
+
+.anniversary-card[data-days="0"] {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff8e1 100%);
+    border: 2px solid #ffd54f;
+}
+
+.anniversary-card[data-days="0"] .cake-icon {
+    animation: bounce 2s infinite;
+}
+
+.cake-icon {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.anniversary-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.anniversary-card .join-date {
+    color: #666;
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+.anniversary-card .days-until {
+    color: #4e73df;
+    font-weight: 500;
+    margin: 8px 0 0 0;
+    font-size: 0.9em;
+}
+
+.no-anniversaries {
+    color: #aaa;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    font-style: italic;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 991px) {
+    .anniversary-container {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .anniversary-cards {
+        justify-content: center;
+    }
+    
+    .anniversary-card {
+        margin-right: 0;
+    }
+}

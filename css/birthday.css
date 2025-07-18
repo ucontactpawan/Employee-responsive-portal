@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.birthday-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+    margin-top: 80px;
+    margin-left: 250px;
+}
+
+.employee-birthdays {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #4e73df;
+    text-align: left;
+    margin-bottom: 28px;
+    padding: 0;
+    width: 100%;
+}
+
+.birthday-sections {
+    display: grid;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+
+.section-container h2, .birthday-heading {
+    color: #1a237e;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e3f2fd;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.birthday-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.birthday-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    border: 1.5px solid #e0e0e0;
+    min-width: 180px;
+    max-width: 210px;
+    margin-bottom: 12px;
+    margin-right: 0;
+    transition: box-shadow 0.2s, transform 0.2s;
+    font-size: 0.98em;
+}
+
+.birthday-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+    transform: translateY(-3px);
+}
+
+.birthday-card.past {
+    background: #f8f9fa;
+    border: 1.5px solid #e9ecef;
+    margin-bottom: 50px;
+}
+
+.birthday-card.future {
+    background: #f3f8ff;
+    border: 1.5px solid #e3f2fd;
+}
+
+.birthday-card.highlight-today {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff8e1 100%);
+    border: 2px solid #ffd54f;
+}
+
+.birthday-card.highlight-today .cake-icon {
+    animation: bounce 2s infinite;
+}
+
+.cake-icon {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.birthday-card .employee-name {
+    color: #1e293b;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.birthday-card .birth-date {
+    color: #64748b;
+    font-size: 0.9em;
+    margin: 6px 0;
+}
+
+.birthday-card .days-until {
+    color: #4e73df;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.no-events {
+    color: #94a3b8;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.birthday-heading {
+    color: #1a237e;
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e3f2fd;
+    text-align: left;
+}
+
+h3 {
+    color: #2c3e50;
+    margin: 12px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.birth-date {
+    color: #546e7a;
+    margin: 6px 0 2px 0;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.days-until {
+    color: #1976d2;
+    font-weight: 600;
+    margin-top: 4px;
+    font-size: 0.95em;
+}
+
+.birthday-card[data-days="0"] .days-until {
+    color: #f57f17;
+    font-size: 1em;
+}
+
+.no-birthdays {
+    text-align: center;
+    color: #78909c;
+    font-style: italic;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px dashed #bbdefb;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    grid-column: 1 / -1;
+}
+
+@keyframes todayPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 213, 79, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(255, 213, 79, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 213, 79, 0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .birthday-card {
+        flex: 0 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 991px) {
+    .birthday-container {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .birthday-container {
+        margin-left: 0;
+    }
+
+    .birthday-card {
+        flex: 1 1 100%;
+    }
+
+    .section-container h2 {
+        font-size: 1.3em;
+    }
+
+    .birthday-container h1 {
+        font-size: 1.8em;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.birthday-card {
+    animation: fadeIn 0.3s ease-out forwards;
+}
