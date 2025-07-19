@@ -6,7 +6,7 @@ if (isset($_POST['signup'])) {
     $name  = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $employee_type = 'employee'; // Default type for new employees
+    $employee_type = 'employee';
 
     //Now check if email is already registered
     $check_query = "SELECT * FROM employees WHERE email = ?";
@@ -17,7 +17,8 @@ if (isset($_POST['signup'])) {
 
     if (mysqli_num_rows($check_result) > 0) {
         $error = "Email already registered. Please use a different email.";
-    } else {        // now inserting the new employee
+    } else {      
+          // now inserting the new employee
         $insert_query = "INSERT INTO employees (name, email, password, employee_type) VALUES (?,?,?,?)";
         $stmt = mysqli_prepare($conn, $insert_query);
         mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $password, $employee_type);

@@ -36,9 +36,9 @@ function showNotification(data) {
     const notification = new Notification(data.title, {
       body: data.body,
       icon: data.icon,
-      requireInteraction: true, // Notification will remain until user clicks or dismisses it
-      tag: tag, // Each notification gets a unique tag
-      silent: false, // Allow sound
+      requireInteraction: true,
+      tag: tag,
+      silent: false,
     });
 
     notification.onclick = function () {

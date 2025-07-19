@@ -404,6 +404,11 @@ body {
 
 .sidebar-menu li {
   margin: 0;
+  border-bottom: 1px solid rgba(184, 197, 209, 0.1);
+}
+
+.sidebar-menu li:last-child {
+  border-bottom: none;
 }
 
 .sidebar-menu li a {
