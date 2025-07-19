@@ -88,13 +88,10 @@ function deleteEmployee(employeeId) {
             alert("Error: " + result.message);
           }
         } catch (e) {
-          console.error("Parse error:", e);
-          console.error("Response:", response);
-          alert("Unexpected error: " + response);
+          alert("Unexpected error occurred");
         }
       },
       error: function (xhr, status, error) {
-        console.error("AJAX Error:", xhr.responseText);
         alert("AJAX error occurred: " + error);
       },
     });
@@ -154,7 +151,9 @@ $(document).ready(function () {
     e.preventDefault();
 
     var employeeId = $("#addEmployeeModal").data("employee-id");
-    var url = employeeId ? "includes/update_employee.php" : "includes/save_employee.php";
+    var url = employeeId
+      ? "includes/update_employee.php"
+      : "includes/save_employee.php";
 
     var formData = {
       name: $("#name").val().trim(),
@@ -193,9 +192,7 @@ $(document).ready(function () {
         }
       },
       error: function (xhr, status, error) {
-        console.error("AJAX Error:", status, error);
-        console.log("Server Response:", xhr.responseText);
-        alert("Error saving employee data. Please check console for details.");
+        alert("Error saving employee data.");
       },
       complete: function () {
         $("#saveBtn").prop("disabled", false).text("Save Employee");

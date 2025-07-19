@@ -13,21 +13,20 @@ if (isset($_POST['signin'])) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    if(mysqli_num_rows($result) > 0){
+    if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
-        if(password_verify($password, $user['password'])){
+        if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_role'] = $user['position'];
             header("Location: dashboard.php");
             exit();
-        }else{
+        } else {
             $error = "Invalid password. Please try again.";
         }
-    }else{
+    } else {
         $error = "User not found! please register first.";
     }
-    
 }
 
 ?>
@@ -38,7 +37,7 @@ if (isset($_POST['signin'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login page</title>
+    <title>Sign In - Employee Portal</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
@@ -53,7 +52,7 @@ if (isset($_POST['signin'])) {
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" id="email" required placeholder="Email">
             </div>
-            <div class="input-group">
+            <div class="input-group password">
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" id="password" required placeholder="Password">
                 <i class="fa fa-eye" id="eye"></i>
@@ -76,6 +75,7 @@ if (isset($_POST['signin'])) {
         </div>
     </div>
 
+    <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
 </body>
 

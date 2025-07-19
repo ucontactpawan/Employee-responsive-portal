@@ -9,12 +9,6 @@ if (!isset($_SESSION['user_id'])) {
   exit();
 }
 
-// Debug information
-echo "<!-- Debug Info:";
-echo "User ID: " . $_SESSION['user_id'] . "\n";
-echo "User Name: " . $_SESSION['user_name'] . "\n";
-echo "User Role: " . $_SESSION['user_role'] . "\n";
-echo "-->";
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -10,17 +10,11 @@ include 'includes/auth.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Sheet</title>
-    <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <!-- Font awesome link -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- styles -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- nav bar style link -->
     <link rel="stylesheet" href="css/navbar.css">
-    <!-- sidebar style link -->
     <link rel="stylesheet" href="css/sidebar.css">
-    <!-- attendance sheet style link -->
     <link href="css/attendance_sheet.css" rel="stylesheet">
 </head>
 
@@ -65,7 +59,6 @@ include 'includes/auth.php';
                         </div>
                     </div>
 
-                    <!-- Apply Button -->
                     <div class="att-filter-group att-button-wrap">
                         <button type="button" class="btn btn-primary att-apply-btn-sm" id="applyFilters">
                             <i class="fas fa-check"></i> Apply
@@ -88,7 +81,7 @@ include 'includes/auth.php';
                         </tr>
                     </thead>
                     <tbody id="attendanceTableBody">
-                        <!-- Table content will be populated by JavaScript -->
+                        <!-- Table content  -->
                     </tbody>
                 </table>
             </div>

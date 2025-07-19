@@ -40,7 +40,9 @@ list($todaysAnniversaries, $upcomingAnniversaries, $recentAnniversaries) = categ
                     <?php if (count($todaysAnniversaries)): ?>
                         <?php foreach ($todaysAnniversaries as $emp): ?>
                             <div class="anniversary-card future" data-days="0">
-                                <div class="cake-icon">🎉</div>
+                                <div class="cake-icon">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
                                 <h3><?php echo htmlspecialchars($emp['name']); ?></h3>
                                 <p class="join-date"><?php echo date('d M Y', strtotime($emp['joining_date'])); ?></p>
                             </div>
@@ -58,7 +60,9 @@ list($todaysAnniversaries, $upcomingAnniversaries, $recentAnniversaries) = categ
                     <?php if (count($upcomingAnniversaries)): ?>
                         <?php foreach ($upcomingAnniversaries as $emp): ?>
                             <div class="anniversary-card future">
-                                <div class="cake-icon">🎉</div>
+                                <div class="cake-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
                                 <h3><?php echo htmlspecialchars($emp['name']); ?></h3>
                                 <p class="join-date"><?php echo date('d M Y', strtotime($emp['joining_date'])); ?></p>
                             </div>
@@ -76,7 +80,9 @@ list($todaysAnniversaries, $upcomingAnniversaries, $recentAnniversaries) = categ
                     <?php if (count($recentAnniversaries)): ?>
                         <?php foreach ($recentAnniversaries as $emp): ?>
                             <div class="anniversary-card past">
-                                <div class="cake-icon">🎉</div>
+                                <div class="cake-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
                                 <h3><?php echo htmlspecialchars($emp['name']); ?></h3>
                                 <p class="join-date"><?php echo date('d M Y', strtotime($emp['joining_date'])); ?></p>
                             </div>
