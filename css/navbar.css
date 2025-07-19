@@ -62,29 +62,6 @@
   transform: translateY(-1px);
 }
 
-/* Special styling for logout link */
-.nav-link[href="logout.php"] {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white !important;
-  font-weight: 600;
-  border-radius: 25px;
-  padding: 0.6rem 1.2rem !important;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
-  border: 2px solid transparent;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.nav-link[href="logout.php"]:hover {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
 .user-name {
   font-weight: 600;
   color: #111827 !important;
@@ -104,7 +81,7 @@
   transform: translateY(-1px);
 }
 
-.user-name i {
+.user-avatar {
   background: linear-gradient(135deg, #1dd1a1, #55a3ff);
   color: white;
   width: 32px;
@@ -114,8 +91,16 @@
   align-items: center;
   justify-content: center;
   margin-right: 8px;
-  font-size: 14px;
   box-shadow: 0 2px 8px rgba(29, 209, 161, 0.3);
+}
+
+.user-avatar i {
+  font-size: 14px;
+}
+
+.user-text {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .dropdown-item {

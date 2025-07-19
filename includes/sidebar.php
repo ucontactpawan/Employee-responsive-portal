@@ -42,5 +42,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <span>Anniversary</span>
             </a>
         </li>
+        <li>
+            <a href="logout.php" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </a>
+        </li>
     </ul>
 </div>

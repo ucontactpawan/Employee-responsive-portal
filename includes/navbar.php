@@ -9,11 +9,11 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <span class="nav-link user-name">
-            <i class="fas fa-user me-2"></i><?php echo $_SESSION['user_name']; ?>
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <span class="user-text"><?php echo $_SESSION['user_name']; ?></span>
           </span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>
     </div>

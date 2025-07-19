@@ -453,6 +453,22 @@ body {
   color: #1dd1a1;
 }
 
+/* Logout button styling */
+.sidebar-menu li a.logout-link {
+  color: #ff6b6b;
+  margin-top: 10px;
+}
+
+.sidebar-menu li a.logout-link:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
+  border-left: 3px solid #ff6b6b;
+}
+
+.sidebar-menu li a.logout-link i {
+  color: #ff6b6b;
+}
+
 .main-content {
   margin-left: 250px;
   padding: 80px 30px 30px;
@@ -567,6 +583,12 @@ body {
   .sidebar-menu li a i {
     margin-right: 12px;
     font-size: 14px;
+  }
+
+  .sidebar-menu li a.logout-link {
+    margin-top: 20px;
+    border-top: 1px solid rgba(184, 197, 209, 0.2);
+    padding-top: 20px;
   }
 
   .main-content {
