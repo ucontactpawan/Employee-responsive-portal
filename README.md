@@ -223,13 +223,7 @@ if (check_in_time <= '09:30:00') {
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
-
-**Your Name**
 
 - GitHub: (https://github.com/ucontactpawan)
 - Email: ucontactpawan@gmail.com
@@ -245,7 +239,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need support, please:
 
-1. Check the [Issues](https://github.com/ucontactpawan/employee-responsive-portal/issues) section
+1. (https://github.com/ucontactpawan/employee-responsive-portal/issues) section
 2. Create a new issue if your problem isn't already reported
 3. Contact the maintainer directly
 
