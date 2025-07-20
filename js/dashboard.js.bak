@@ -1,0 +1,301 @@
+// Global chart variables
+let todayAttendanceChart = null;
+let weeklyAttendanceChart = null;
+
+// Make the refreshDashboard function available globally
+window.refreshDashboard = function() {
+  loadDashboardData();
+};
+
+// Document ready function
+$(document).ready(function() {
+  console.log("Document ready in dashboard.js");
+  
+  // Initialize the dashboard
+  loadDashboardData();
+});
+
+// Function to load dashboard data from the server
+function loadDashboardData() {
+  console.log("Loading dashboard data...");
+  $(".card").addClass("loading");
+
+  $.ajax({
+    url: "includes/get_dashboard_data.php",
+    type: "GET",
+    dataType: "json",
+    timeout: 10000,
+    success: function(response) {
+      console.log("Data loaded successfully:", response);
+      $(".card").removeClass("loading");
+      if (response.status === "success") {
+        updateDashboardUI(response.data);
+      }
+    },
+    error: function(xhr, status, error) {
+      console.error("Error loading data:", error);
+      $(".card").removeClass("loading");
+      if (status === "timeout") {
+        setTimeout(loadDashboardData, 5000);
+      }
+    }
+  });
+}
+
+// Function to update the dashboard UI with the data received from the server
+function updateDashboardUI(data) {
+  $("#totalEmployees").text(data.total_employees);
+  $("#onTimeToday").text(data.on_time_today);
+  $("#lateToday").text(data.late_today);
+  $("#onTimePercent").text(data.on_time_percent + "%");
+
+  updateProgressCircle(
+    ".card:nth-child(2) .circle-progress svg circle:last-child",
+    data.on_time_today,
+    data.total_employees
+  );
+  updateProgressCircle(
+    ".card:nth-child(3) .circle-progress svg circle:last-child",
+    data.late_today,
+    data.total_employees
+  );
+  updateProgressCircle(
+    ".card:nth-child(4) .circle-progress svg circle:last-child",
+    data.on_time_percent,
+    100
+  );
+
+  // Update the charts
+  updateTodayAttendanceChart(data);
+  updateWeeklyAttendanceChart(data);
+}
+
+  function updateTodayAttendanceChart(data) {
+    console.log("Updating today's attendance chart with data:", data);
+    const canvas = document.getElementById('todayAttendanceChart');
+    if (!canvas) {
+      console.error("Today attendance chart canvas not found");
+      return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    const chartData = {
+      labels: ['On Time', 'Late', 'Absent'],
+      datasets: [{
+        data: [data.on_time_today, data.late_today, data.absent_today],
+        backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+        borderWidth: 0,
+        hoverOffset: 4
+      }]
+    };
+    
+    // Update legend values
+    $('#legendOnTime').text(data.on_time_today);
+    $('#legendLate').text(data.late_today);
+    $('#legendAbsent').text(data.absent_today);
+    
+    // Destroy existing chart if it exists
+    if (todayAttendanceChart) {
+      todayAttendanceChart.destroy();
+    }
+    
+    // Create new chart
+    todayAttendanceChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: chartData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '70%',
+        plugins: {
+          legend: {
+            display: false // Hide default legend as we're using custom HTML legend
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const value = context.raw;
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = Math.round((value / total) * 100);
+                return `${context.label}: ${value} (${percentage}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    console.log("Today's attendance chart created:", todayAttendanceChart);
+  }
+  
+  function updateWeeklyAttendanceChart(data) {
+    console.log("Updating weekly attendance chart with data:", data.weekly_data);
+    const canvas = document.getElementById('weeklyAttendanceChart');
+    if (!canvas) {
+      console.error("Weekly attendance chart canvas not found");
+      return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    const weeklyData = data.weekly_data;
+    
+    // Extract the data for the chart
+    const labels = Object.keys(weeklyData);
+    const onTimeData = labels.map(day => weeklyData[day].on_time);
+    const lateData = labels.map(day => weeklyData[day].late);
+    const absentData = labels.map(day => weeklyData[day].absent);
+    
+    const chartData = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Present',
+          data: onTimeData,
+          backgroundColor: '#10b981',
+          borderWidth: 0,
+          stack: 'Stack 0',
+        },
+        {
+          label: 'Late',
+          data: lateData,
+          backgroundColor: '#f59e0b',
+          borderWidth: 0,
+          stack: 'Stack 0',
+        },
+        {
+          label: 'Absent',
+          data: absentData,
+          backgroundColor: '#ef4444',
+          borderWidth: 0,
+          stack: 'Stack 0',
+        }
+      ]
+    };
+    
+    // Destroy existing chart if it exists
+    if (weeklyAttendanceChart) {
+      weeklyAttendanceChart.destroy();
+    }
+    
+    // Create new chart
+    weeklyAttendanceChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              align: 'end',
+              labels: {
+                boxWidth: 12,
+                padding: 15,
+                usePointStyle: true,
+                pointStyle: 'circle'
+              }
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                title: function(tooltipItems) {
+                  return tooltipItems[0].label;
+                },
+                label: function(context) {
+                  return context.dataset.label + ' : ' + context.raw;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: '#e5e7eb',
+                drawBorder: false
+              },
+              ticks: {
+                precision: 0,
+                stepSize: 2
+              },
+              max: function(context) {
+                // Calculate max value for the y-axis with a bit of padding
+                const max = Math.max(...onTimeData.map((val, i) => val + lateData[i] + absentData[i]));
+                return Math.ceil(max * 1.2);
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  function updateProgressCircle(selector, value, max) {
+    const circle = $(selector);
+    if (circle.length > 0) {
+      const percentage = max > 0 ? (value / max) * 100 : 0;
+      const circumference = 2 * Math.PI * 25;
+      const offset = circumference - (percentage / 100) * circumference;
+
+      circle.css({
+        "stroke-dasharray": circumference,
+        "stroke-dashoffset": offset,
+      });
+    }
+  }
+
+  loadDashboardData();
+  setInterval(loadDashboardData, 30000);
+
+  window.refreshDashboard = function () {
+    loadDashboardData();
+  };
+
+  $(".sidebar-toggle").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var $sidebar = $(".sidebar");
+    var $overlay = $(".sidebar-overlay");
+
+    if ($sidebar.hasClass("show")) {
+      $sidebar.removeClass("show");
+      $overlay.removeClass("show");
+    } else {
+      $sidebar.addClass("show");
+      $overlay.addClass("show");
+    }
+  });
+
+  $(".sidebar-overlay").on("click", function () {
+    $(".sidebar").removeClass("show");
+    $(".sidebar-overlay").removeClass("show");
+  });
+
+  $(document).on("click", function (e) {
+    if ($(window).width() <= 768) {
+      if (!$(e.target).closest(".sidebar, .sidebar-toggle").length) {
+        $(".sidebar").removeClass("show");
+        $(".sidebar-overlay").removeClass("show");
+      }
+    }
+  });
+
+  $(window).on("resize", function () {
+    if ($(window).width() > 768) {
+      $(".sidebar").removeClass("show");
+      $(".sidebar-overlay").removeClass("show");
+    }
+  });
+  
+  // Log that the script has loaded completely
+  console.log("Dashboard.js loaded and initialized");
+});
+
+// End of document ready

@@ -70,6 +70,76 @@
   transition: stroke-dashoffset 0.3s;
 }
 
+/* Chart styles */
+.chart-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 25px;
+  height: 100%;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.chart-icon {
+  margin-right: 10px;
+  color: #3b82f6;
+}
+
+.chart-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-body {
+  height: 300px;
+  position: relative;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.legend-color.on-time {
+  background-color: #10b981;
+}
+
+.legend-color.late {
+  background-color: #f59e0b;
+}
+
+.legend-color.absent {
+  background-color: #ef4444;
+}
+
+.legend-label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .card-container {
@@ -85,6 +155,10 @@
     font-size: 28px;
     bottom: 20px;
     right: 20px;
+  }
+
+  .chart-body {
+    height: 250px;
   }
 }
 

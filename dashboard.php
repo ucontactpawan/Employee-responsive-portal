@@ -75,11 +75,54 @@ include('includes/db.php');
                 <h3 id="onTimePercent">-</h3>
             </div>
         </div>
+
+        <!-- Charts Row -->
+        <div class="row mt-4">
+            <!-- Today's Attendance Distribution Chart -->
+            <div class="col-md-6 mb-4">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <span class="chart-icon"><i class="fas fa-chart-pie"></i></span>
+                        <h4>Today's Attendance Distribution</h4>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="attendanceDistribution"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-color on-time"></span>
+                            <span class="legend-label">On Time: <span id="legendOnTime">0</span></span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color late"></span>
+                            <span class="legend-label">Late: <span id="legendLate">0</span></span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color absent"></span>
+                            <span class="legend-label">Absent: <span id="legendAbsent">0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Weekly Attendance Trend Chart -->
+            <div class="col-md-6 mb-4">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <span class="chart-icon"><i class="fas fa-chart-bar"></i></span>
+                        <h4>Weekly Attendance Trend</h4>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="weeklyAttendanceTrend"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <?php include('includes/footer.php'); ?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/script.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/notifications.js"></script>

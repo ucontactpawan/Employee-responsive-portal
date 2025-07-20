@@ -28,7 +28,7 @@ try {
         CASE 
             WHEN a.in_time LIKE '%:%:%' THEN 
                 CASE 
-                    WHEN TIME(a.in_time) <= '09:00:00' THEN 'on_time'
+                    WHEN TIME(a.in_time) <= '09:30:00' THEN 'on_time'
                     ELSE 'late'
                 END
             ELSE 'invalid_format'
@@ -69,6 +69,48 @@ try {
     // Calculate on-time percentage
     $onTimePercent = $totalEmployees > 0 ? round(($onTime / $totalEmployees) * 100, 1) : 0;
 
+    // Calculate absent count
+    $absentToday = $totalEmployees - $totalPresent;
+
+    // Get weekly attendance data (last 7 days)
+    $weeklyQuery = "SELECT 
+        DAYNAME(DATE(a.created_at)) as day_name,
+        COUNT(DISTINCT a.employee_id) as total_present,
+        SUM(CASE WHEN TIME(a.in_time) <= '09:30:00' THEN 1 ELSE 0 END) as on_time,
+        SUM(CASE WHEN TIME(a.in_time) > '09:30:00' THEN 1 ELSE 0 END) as late
+    FROM attendance a
+    INNER JOIN employees e ON a.employee_id = e.id
+    WHERE DATE(a.created_at) BETWEEN DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND CURDATE() 
+    AND e.status = '1'
+    AND DAYOFWEEK(DATE(a.created_at)) BETWEEN 2 AND 6 
+    GROUP BY DAYNAME(DATE(a.created_at))
+    ORDER BY FIELD(DAYNAME(DATE(a.created_at)), 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
+
+    $weeklyResult = $conn->query($weeklyQuery);
+    $weeklyData = [];
+    $daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+    // Initialize data for all days
+    foreach ($daysOfWeek as $day) {
+        $weeklyData[$day] = [
+            'on_time' => 0,
+            'late' => 0,
+            'absent' => $totalEmployees
+        ];
+    }
+
+    // Fill in actual data where available
+    if ($weeklyResult) {
+        while ($row = $weeklyResult->fetch_assoc()) {
+            $dayName = substr($row['day_name'], 0, 3);
+            if (isset($weeklyData[$dayName])) {
+                $weeklyData[$dayName]['on_time'] = (int)$row['on_time'];
+                $weeklyData[$dayName]['late'] = (int)$row['late'];
+                $weeklyData[$dayName]['absent'] = $totalEmployees - ((int)$row['on_time'] + (int)$row['late']);
+            }
+        }
+    }
+
     // Get recent attendance for real-time updates
     $recentQuery = "SELECT 
         e.name,
@@ -107,10 +149,19 @@ try {
             'total_employees' => (int)$totalEmployees,
             'on_time_today' => (int)$onTime,
             'late_today' => (int)$late,
+            'absent_today' => (int)$absentToday,
             'on_time_percent' => $onTimePercent,
             'total_present' => (int)$totalPresent,
             'recent_activity' => $recentActivity,
-            'last_updated' => date('Y-m-d H:i:s')
+            'last_updated' => date('Y-m-d H:i:s'),
+            'chart_data' => [
+                'today_distribution' => [
+                    'on_time' => (int)$onTime,
+                    'late' => (int)$late,
+                    'absent' => (int)$absentToday
+                ],
+                'weekly_trend' => $weeklyData
+            ]
         ]
     ]);
 } catch (Exception $e) {

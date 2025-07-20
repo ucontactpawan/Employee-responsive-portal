@@ -485,10 +485,10 @@ body {
 /* Common styles shared across pages */
 .main-content {
   margin-left: 250px;
-  margin-top: 60px;
+  margin-top: 70px;
   padding: 20px;
   background-color: #f8f9fa;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 70px);
   transition: margin-left 0.3s ease;
 }
 
@@ -496,7 +496,9 @@ body {
 @media screen and (max-width: 768px) {
   .main-content {
     margin-left: 0;
+    margin-top: 60px;
     padding: 15px;
+    min-height: calc(100vh - 60px);
   }
 }
 
