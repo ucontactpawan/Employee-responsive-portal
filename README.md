@@ -98,7 +98,7 @@ Before running this application, make sure you have:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/employee-responsive-portal.git
+   git clone https://github.com/ucontactpawan/Employee-responsive-portal.git
    ```
 
 2. **Move to XAMPP directory**
@@ -170,23 +170,13 @@ responsive-portal/
 ![alt text](image-9.png)
 
 ### Mobile Responsive
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-13.png)
+![alt text](image-14.png)
 
-<div style="display: flex; gap: 20px;">
-  <img src="screenshots/mobile-dashboard.png" width="250" alt="Mobile Dashboard">
-  <img src="screenshots/mobile-menu.png" width="250" alt="Mobile Menu">
-  <img src="screenshots/mobile-attendance.png" width="250" alt="Mobile Attendance">
-</div>
 
-### Key Features
-
-| Feature               | Screenshot                                    |
-| --------------------- | --------------------------------------------- |
-| Interactive Charts    | ![Charts](screenshots/charts.png)             |
-| Employee Directory    | ![Directory](screenshots/directory.png)       |
-| Attendance Tracking   | ![Tracking](screenshots/tracking.png)         |
-| Birthday Celebrations | ![Celebrations](screenshots/celebrations.png) |
-
-## 🎯 Key Features Detailed
 
 ### Dashboard Analytics
 
@@ -243,7 +233,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@yourusername](https://github.com/ucontactpawan)
 - Email: your.email@example.com
 
 ## 🙏 Acknowledgments
@@ -257,7 +247,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need support, please:
 
-1. Check the [Issues](https://github.com/yourusername/employee-responsive-portal/issues) section
+1. Check the [Issues](https://github.com/ucontactpawan/employee-responsive-portal/issues) section
 2. Create a new issue if your problem isn't already reported
 3. Contact the maintainer directly
 
