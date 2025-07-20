@@ -1,198 +1,401 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f8f9fa;
+/* Modern Anniversary Page Styles */
+.page-header {
+  background: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header-icon {
+  background: #f97316;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+}
+
+.header-icon i {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.content-section {
+  max-width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.anniversary-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px 20px 60px 20px;
-  margin-top: 80px;
-  margin-left: 250px;
-}
-
-.employee-anniversaries {
-  font-size: 1.4em;
-  font-weight: 500;
-  color: #4e73df;
-  text-align: left;
-  margin-bottom: 28px;
-  padding: 0;
-  width: 100%;
-}
-
-.anniversary-sections {
-  display: grid;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.anniversary-heading {
-  color: #1a237e;
-  font-size: 1.3em;
-  font-weight: 600;
-  margin-bottom: 18px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #e3f2fd;
-  text-align: left;
-}
-
-.anniversary-cards {
+/* Filters Bar - Full Width */
+.filters-bar {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.anniversary-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  border: 1.5px solid #e0e0e0;
-  min-width: 180px;
-  max-width: 210px;
-  margin-bottom: 12px;
-  margin-right: 0;
-  transition: box-shadow 0.2s, transform 0.2s;
-  font-size: 0.98em;
-}
-
-.anniversary-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
-  transform: translateY(-3px);
-}
-
-.anniversary-card.past {
-  background: #f8f9fa;
-  border: 1.5px solid #e9ecef;
-  margin-bottom: 50px;
-}
-
-.anniversary-card.future {
-  background: #f3f8ff;
-  border: 1.5px solid #e3f2fd;
-}
-
-.anniversary-card[data-days="0"] {
-  background: linear-gradient(135deg, #fff9c4 0%, #fff8e1 100%);
-  border: 2px solid #ffd54f;
-}
-
-.anniversary-card[data-days="0"] .cake-icon {
-  animation: bounce 2s infinite;
-}
-
-.cake-icon {
-  font-size: 2em;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: center;
+  gap: 1.5rem;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.cake-icon i {
-  color: #ff6b6b;
+.anniversary-cards-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 1500px;
+}
+
+.search-container i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.filter-container {
+  min-width: 180px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Today's anniversaries - birthday cake icon */
-.anniversary-card[data-days="0"] .cake-icon i {
-  color: #ff6b6b;
-  animation: bounce 2s infinite;
+.filter-select:focus {
+  outline: none;
+  border-color: #f97316;
 }
 
-/* Upcoming anniversaries - calendar icon */
-.anniversary-card.future .cake-icon i {
-  color: #4ecdc4;
+/* Anniversary Sections */
+.anniversary-section {
+  margin-bottom: 3rem;
 }
 
-/* Recent anniversaries - trophy icon */
-.anniversary-card.past .cake-icon i {
-  color: #ffd93d;
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.anniversary-card:hover .cake-icon i {
-  transform: scale(1.2);
+.section-icon {
+  background: #f97316;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
 }
 
-/* Add special effects for different card types */
-.anniversary-card[data-days="0"]:hover {
-  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-  border-color: #ff6b6b;
+.section-icon.today-icon {
+  background: #f97316;
 }
 
-.anniversary-card.future:hover {
-  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
-  border-color: #4ecdc4;
+.section-icon.upcoming-icon {
+  background: #10b981;
 }
 
-.anniversary-card.past:hover {
-  box-shadow: 0 8px 25px rgba(255, 217, 61, 0.3);
-  border-color: #ffd93d;
+.section-icon.recent-icon {
+  background: #6b7280;
 }
 
-.anniversary-card h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.1em;
+.section-icon i {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #1f2937;
+  margin: 0;
 }
 
-.anniversary-card .join-date {
-  color: #666;
-  margin: 4px 0;
-  font-size: 0.9em;
+.anniversary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 
-.anniversary-card .days-until {
-  color: #4e73df;
-  font-weight: 500;
-  margin: 8px 0 0 0;
-  font-size: 0.9em;
-}
-
-.no-anniversaries {
-  color: #aaa;
+/* Employee Cards */
+.employee-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f3f4f6;
+  position: relative;
   text-align: center;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.employee-card.today-card {
+  border: 2px solid #f97316;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+}
+
+.days-counter {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.anniversary-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.today-badge {
+  background: #f97316;
+  color: white;
+}
+
+.recent-badge {
+  background: #6b7280;
+  color: white;
+}
+
+.upcoming-badge {
+  background: #10b981;
+  color: white;
+}
+
+.employee-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+  border: 3px solid #f8f9fa;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+}
+
+.employee-avatar img {
   width: 100%;
-  padding: 20px;
-  font-style: italic;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
+.employee-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.employee-id {
+  color: #6b7280;
+  font-size: 13px;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.anniversary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.info-item i {
+  width: 16px;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9ca3af;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px dashed #e5e7eb;
+  margin-top: 2rem;
+}
+
+.empty-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.empty-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .anniversary-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
   }
 }
 
-@media (max-width: 991px) {
-  .anniversary-container {
-    margin-left: 20px;
+@media (max-width: 1024px) {
+  .anniversary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .anniversary-cards {
+  .page-header {
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .header-content {
+    padding: 0 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-icon {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .header-text h1 {
+    font-size: 1.75rem;
+  }
+
+  .anniversary-cards-container {
+    padding: 0 1rem;
+  }
+
+  .filters-bar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .search-container {
+    max-width: none;
+  }
+
+  .apply-btn {
+    width: 100%;
     justify-content: center;
   }
 
-  .anniversary-card {
+  .anniversary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-icon {
     margin-right: 0;
   }
 }
