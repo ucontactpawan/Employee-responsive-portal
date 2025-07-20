@@ -14,6 +14,8 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 - **Upcoming Events**: Birthday and anniversary notifications
 
 ![Dashboard Screenshot](screenshots/dashboard.png)
+![alt text](image.png)
+![alt text](image-8.png)
 
 ### 👥 Employee Management
 
@@ -23,6 +25,7 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 - **Role-based Access**: Different permission levels for users
 
 ![Employee Management Screenshot](screenshots/employee-management.png)
+![alt text](image-1.png)
 
 ### ⏰ Attendance System
 
@@ -33,6 +36,8 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 - **Weekend Exclusion**: Business days only for accurate reporting
 
 ![Attendance System Screenshot](screenshots/attendance.png)
+![alt text](image-2.png)
+![alt text](image-4.png)
 
 ### 🎉 Employee Celebrations
 
@@ -43,6 +48,9 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 
 ![Birthday Page Screenshot](screenshots/birthday.png)
 ![Anniversary Page Screenshot](screenshots/anniversary.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
 
 ### 📱 Responsive Design
 
@@ -52,6 +60,7 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 - **Cross-browser**: Compatible with all modern browsers
 
 ![Mobile View Screenshot](screenshots/mobile-view.png)
+
 
 ## 🛠️ Technology Stack
 
@@ -158,6 +167,7 @@ responsive-portal/
 ### Desktop View
 
 ![Desktop Dashboard](screenshots/desktop-dashboard.png)
+![alt text](image-9.png)
 
 ### Mobile Responsive
 
