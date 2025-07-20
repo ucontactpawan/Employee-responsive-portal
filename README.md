@@ -61,7 +61,6 @@ A modern, responsive employee management portal built with PHP, MySQL, Bootstrap
 
 ![Mobile View Screenshot](screenshots/mobile-view.png)
 
-
 ## 🛠️ Technology Stack
 
 ### Frontend
@@ -170,13 +169,12 @@ responsive-portal/
 ![alt text](image-9.png)
 
 ### Mobile Responsive
+
 ![alt text](image-10.png)
 ![alt text](image-11.png)
 ![alt text](image-12.png)
 ![alt text](image-13.png)
 ![alt text](image-14.png)
-
-
 
 ### Dashboard Analytics
 
@@ -233,8 +231,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/ucontactpawan)
-- Email: your.email@example.com
+- GitHub: (https://github.com/ucontactpawan)
+- Email: ucontactpawan@gmail.com
 
 ## 🙏 Acknowledgments
 
